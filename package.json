@@ -1,0 +1,27 @@
+{
+  "name": "node-mongo-first-api-demo",
+  "version": "1.0.0",
+  "description": "First api demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "bunyan": "^1.8.12",
+    "config": "^1.25.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.10.8",
+    "nodemon": "^1.11.0",
+    "uuid": "^3.0.1"
+  },
+  "keywords": [
+    "api",
+    "mongo",
+    "node"
+  ],
+  "author": "Debadatta Mahanta",
+  "license": "ISC"
+}

@@ -1,0 +1,7 @@
+{
+  "mongo_url": "mongodb://localhost/",
+  "mongo_dbs": {
+    "proj1":"first_api"
+  },
+  "port": 8080
+}

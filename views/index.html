@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Employee Form</title>
+	<style type="text/css">
+		.set{
+			position: absolute;
+			top:5%;
+			left: 37%;
+			padding: 40px 88px;
+			text-shadow: 2px 2px 8px #000;
+			color: #fff;
+			font-size: 22px;
+			border-radius: 41px;
+		    background-color: #f2f2f2;
+		}
+		.section{
+		    border-radius: 5px;
+		    background-color: #f2f2f2;
+		    padding: 20px;
+		}
+		input[type=text], input[type=number], input[type=email] {
+		    width: 100%;
+		    padding: 12px 20px;
+		    margin: 8px 0;
+		    display: inline-block;
+		    border: 1px solid #ccc;
+		    border-radius: 4px;
+		    box-sizing: border-box;
+		}
+		/*input:required:invalid, input:focus:invalid {
+		  -moz-box-shadow: none;
+		  border: 1px solid red;
+		}*/
+		/*input:invalid {
+		  border: 1px solid red;
+		}
+		input:valid {
+		  border: 1px solid blue;
+		}*/
+		.button {
+		    background-color: #4CAF50; /* Green */
+		    border: none;
+		    color: white;
+		    padding: 10px 94px;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 16px;
+		    cursor: pointer;
+		}
+		.button:hover {
+		    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+		}
+	</style>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<section>
+		<form id="empform" action="/" method="post">
+			<fieldset class="set">
+				<legend> Employee Information: </legend>
+				EmpId<span style="color: red;">*</span>:<br>
+				<input type="number" name="empId" id="empId" required><br>
+				Name<span style="color: red;">*</span>:<br> 
+				<input type="text" name="name" id="name" placeholder="Enter your name.." required><br>
+				Email<span style="color: red;">*</span>:<br>
+				<input type="email" name="email" id="email" placeholder="Enter your email" required><br>
+				Mobile<span style="color: red;">*</span>:<br>
+				<input type="number" name="mobile" id="mobile" minlength="10" maxlength="10" pattern="[0-9]{10}" placeholder="Enter your mobile number" required><br>
+				Designation<span style="color: red;">*</span>:<br>
+				<input type="text" name="designation" id="designation" placeholder="Software Developer" required><br>
+				Role<span style="color: red;">*</span>:<br>
+				<input type="text" name="role" id="role" placeholder="Frontend/Marketing/sales" required><br><br>
+				<button type="submit" class="button" id="submit" name="submit" value="Submit">Submit</button>
+			</fieldset>
+		</form>
+	</section>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function($) {
+	    $('#empform').on('click', '#submit', function(e){
+	        e.preventDefault();
+	        var empId = $("#empId").val(); 
+	        console.log(empId);
+	        var name  = $("#name").val(); 
+	        console.log(name);
+	        var email = $("#email").val(); 
+	        console.log(email);
+	        var mobile = $("#mobile").val(); 
+	        console.log(mobile);
+	        var designation = $("#designation").val(); 
+	        console.log(designation);
+	        var role = $("#role").val(); 
+	        console.log(role);
+		    var postData = {
+		    	empId:empId,
+		    	name:name,
+		    	email:email,
+		    	mobile:mobile,
+		    	designation:designation,
+		    	role:role
+		    };
+		    console.log(postData);
+	        $.ajax({
+	            type: "POST",
+	            url: "http://localhost:8080/api/employee",
+	            data: postData,
+	            // contentType: "text/html; charset=utf-8",
+	            success: function(data) {
+	                alert("data saved");
+	                console.log(data);
+	            },
+	            error: function(data) {
+	            	alert("please fill all the required fields");
+	            	console.log("Form submitting error");
+	                console.log(data);
+	            }
+	        })
+		})
+	});
+
+	</script>
+
+</body>
+</html>
